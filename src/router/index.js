@@ -7,7 +7,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: { name: 'home' }
+    redirect: { name: 'home' },
+    name: 'default'//默认打开home页面
   },
   {
     path: '/home',
@@ -29,6 +30,17 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const flag = false
+  if (flag) {
+    console.log(to)
+    console.log(from)
+    console.log(next)
+  }
+
+  next()
 })
 
 export default router
